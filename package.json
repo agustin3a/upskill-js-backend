@@ -20,6 +20,7 @@
   "homepage": "https://github.com/agustin3a/upskill-js-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-validator": "^6.12.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

@@ -1,5 +1,3 @@
-const dummyData = require("../util/dummyData");
-const { v4: uuidv4 } = require("uuid");
 const Account = require('../models/account');
 
 module.exports.getAccounts = (req, res) => {
