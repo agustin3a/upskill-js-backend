@@ -49,21 +49,21 @@ const generateTransactionItems = (numberOfItems) => {
 };
 
 // get transactions
-router.get("/", (req, res) => {
+router.get("/transactions", (req, res) => {
   let transactions = generateTransactionItems(10);
   let payload = { status: true, transactions };
   res.status(200).json(payload);
 });
 
 // create transaction
-router.post("/", (req, res) => {
+router.post("/transaction", (req, res) => {
   let { body } = req;
   let payload = { status: true, transaction: body };
   res.status(200).json(payload);
 });
 
 // update transaction
-router.put("/:transactionId", (req, res) => {
+router.put("/transaction/:transactionId", (req, res) => {
   let { transactionId } = req.params;
   let { body } = req;
   let payload = { status: true, transactionId, transaction: body };
@@ -71,7 +71,7 @@ router.put("/:transactionId", (req, res) => {
 });
 
 // delete transaction
-router.delete("/:transactionId", (req, res) => {
+router.delete("/transaction/:transactionId", (req, res) => {
   let { transactionId } = req.params;
   let { body } = req;
   let payload = { status: true, transactionId, transaction: body };
