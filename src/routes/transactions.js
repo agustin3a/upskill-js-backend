@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const { checkSchema, check } = require('express-validator');
+const { checkSchema } = require('express-validator');
 const transactionController = require('../controllers/transactions');
 const transactionsValidationSchemas = require('../validation/transaction');
 

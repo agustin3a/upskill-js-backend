@@ -12,9 +12,9 @@ module.exports.CATEGORIES = [
 ];
 
 module.exports.ACCOUNTS = [
-  { id: 1, number: "2342342", type: "savings" },
-  { id: 2, number: "2112223", type: "savings" },
-  { id: 3, number: "11132344", type: "checking" },
+  { id: 1, number: "2342342", type: 2, name: "Edward", balance: 0 },
+  { id: 2, number: "2112223", type: 2, name: "Alphonse", balance: 100 },
+  { id: 3, number: "11132344", type: 1, name: "John", balance: 500 },
 ];
 
 // Dummy transactions generator
