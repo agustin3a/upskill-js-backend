@@ -3,7 +3,7 @@ var router = express.Router();
 const { checkSchema } = require('express-validator');
 const { AccountType } = require("../../models");
 const AccountTypesController = require("../controllers/accountTypes");
-const AccountTypesValidationSchemas = require('../validatioN/accountTypes');
+const AccountTypesValidationSchemas = require('../validation/accountTypes');
 
 // Find all account types
 router.get("/accountTypes",  AccountTypesController.list);
