@@ -1,73 +1,75 @@
 module.exports.createTransactionSchema = {
-  transactionType: {
+  expense: {
     in: ["body"],
-    isString: true,
-  },
-  category: {
-    in: ["body"],
-    isInt: true,
-    toInt: true,
-  },
-  targetAccountName: {
-    in: ["body"],
-    isString: true,
-  },
-  account: {
-    in: ["body"],
-    isInt: true,
-    toInt: true,
-  },
-  currency: {
-    in: ["body"],
-    isString: true,
+    isBoolean: true,
+    toBoolean: true,
   },
   amount: {
     in: ["body"],
     isFloat: true,
     toFloat: true,
   },
-  date: {
+  transaction_date: {
     in: ["body"],
     isDate: true,
     toDate: true,
+  },
+  recipient: {
+    in: ["body"],
+    isString: true,
+    toString: true,
+  },
+  display: {
+    in: ["body"],
+    isBoolean: true,
+    toBoolean: true,
+  },
+  currency_id: {
+    in: ["body"],
+    isInt: true,
+    toInt: true,
+  },
+  account_id: {
+    in: ["body"],
+    isInt: true,
+    toInt: true,
+  },
+  category_id: {
+    in: ["body"],
+    isInt: true,
+    toInt: true,
   },
 };
 
 module.exports.updateTransactionSchema = {
-  transactionId: {
-    in: ["params"],
-    isString: true,
-  },
-  transactionType: {
+  expense: {
     in: ["body"],
-    isString: true,
-  },
-  category: {
-    in: ["body"],
-    isInt: true,
-    toInt: true,
-  },
-  targetAccountName: {
-    in: ["body"],
-    isString: true,
-  },
-  account: {
-    in: ["body"],
-    isInt: true,
-    toInt: true,
-  },
-  currency: {
-    in: ["body"],
-    isString: true,
+    isBoolean: true,
+    toBoolean: true,
   },
   amount: {
     in: ["body"],
     isFloat: true,
     toFloat: true,
   },
-  date: {
+  transaction_date: {
     in: ["body"],
     isDate: true,
     toDate: true,
+  },
+  recipient: {
+    in: ["body"],
+    isString: true,
+    toString: true,
+  },
+  display: {
+    in: ["body"],
+    isBoolean: true,
+    toBoolean: true,
+  },
+  category_id: {
+    in: ["body"],
+    isInt: true,
+    toInt: true,
   },
 };

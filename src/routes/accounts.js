@@ -1,23 +1,20 @@
 var express = require("express");
 var router = express.Router();
 const { checkSchema } = require('express-validator');
-var accountsController = require("../controllers/accounts");
+const AccountsController = require("../controllers/accounts");
 const accountsValidationSchemas = require('../validation/accounts');
 
 // get accounts
-router.get("/accounts", accountsController.getAccounts);
+router.get("/accounts", AccountsController.list);
 
 // get account
-router.get("/account/:accountId", accountsController.getAccount);
+router.get("/account/:id", AccountsController.find);
 
 // update account
-router.put("/account/:accountId", checkSchema(accountsValidationSchemas.updateAccountSchema), accountsController.updateAccount);
-
-// delete account
-router.delete("/account/:accountId", accountsController.deleteAccount);
+router.put("/account/:id", checkSchema(accountsValidationSchemas.updateAccountSchema), AccountsController.update);
 
 // create account
-router.post("/account", checkSchema(accountsValidationSchemas.createAccountSchema), accountsController.createAccount);
+router.post("/account", checkSchema(accountsValidationSchemas.createAccountSchema), AccountsController.create);
 
 module.exports = router;
   

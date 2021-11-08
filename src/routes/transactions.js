@@ -5,18 +5,15 @@ const transactionController = require('../controllers/transactions');
 const transactionsValidationSchemas = require('../validation/transaction');
 
 // get transactions
-router.get("/transactions", transactionController.getTransactions);
+router.get("/transactions", transactionController.list);
 
 // get transaction
-router.get("/transaction/:transactionId", transactionController.getTransaction);
+router.get("/transaction/:id", transactionController.find);
 
 // create transaction
-router.post("/transaction",checkSchema(transactionsValidationSchemas.createTransactionSchema), transactionController.createTransaction);
+router.post("/transaction",checkSchema(transactionsValidationSchemas.createTransactionSchema), transactionController.create);
 
 // update transaction
-router.put("/transaction/:transactionId", checkSchema(transactionsValidationSchemas.updateTransactionSchema),transactionController.updateTransaction);
-
-// delete transaction
-router.delete("/transaction/:transactionId",transactionController.deleteTransaction);
+router.put("/transaction/:id", checkSchema(transactionsValidationSchemas.updateTransactionSchema),transactionController.update);
 
 module.exports = router;
