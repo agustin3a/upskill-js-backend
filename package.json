@@ -1,6 +1,6 @@
 {
   "name": "upskill-js-backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React & Node JS Upskill backend project",
   "main": "app.js",
   "scripts": {

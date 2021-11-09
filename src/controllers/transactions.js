@@ -1,6 +1,7 @@
 const { Transaction, Account, Category, Currency } = require("../../models");
 const { validationResult } = require("express-validator");
 const TransferSevice = require("../services/transferService");
+const AccountService = require("../services/accountService");
 const { Op } = require("sequelize");
 const _ = require("lodash");
 const moment = require("moment");
@@ -40,6 +41,15 @@ module.exports = {
       let transaction = await Transaction.create(newTransactionParams);
       let Category = await transaction.getCategory();
       let Currency = await transaction.getCurrency();
+      // Update account's balance
+      let transactionAmount = transaction.expense
+        ? transaction.amount * -1
+        : transaction.amount;
+      await AccountService.updateBalance(
+        transaction.user_id,
+        transaction.account_id,
+        transactionAmount
+      );
       let Account = await transaction.getAccount();
       return res.status(200).send({
         status: true,
@@ -81,7 +91,11 @@ module.exports = {
         transactionFind.limit = 10;
       }
       let transactions = await Transaction.findAll(transactionFind);
-      let transfers = await TransferSevice.getTransferTransaction(uid,from,to);
+      let transfers = await TransferSevice.getTransferTransaction(
+        uid,
+        from,
+        to
+      );
       transactions = transactions.concat(transfers);
       transactions.sort((a, b) => {
         let aDate = new Date(a.transaction_date);

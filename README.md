@@ -34,3 +34,16 @@ Start server in development mode (nodemon)
 ```
 npm run serve-dev
 ```
+
+## Database migrations
+
+Create all tables:
+
+```
+npx sequelize-cli db:migrate
+```
+
+Create starter data:
+```
+npx sequelize-cli db:seed:all
+```

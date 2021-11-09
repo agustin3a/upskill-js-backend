@@ -7,6 +7,7 @@ const accountTypesRoutes = require("./src/routes/accountTypes");
 const userRoutes = require("./src/routes/users");
 const currenciesRoutes = require("./src/routes/currencies");
 const transfersRoutes = require("./src/routes/transfers");
+const exchangeRoutes = require("./src/routes/exchange");
 const firebaseGuard = require("./src/guard/fb-guard");
 
 const app = express();
@@ -23,9 +24,22 @@ var logger = function (req, res, next) {
 // Middlewares
 app.use(logger);
 app.use(cors());
-app.use(firebaseGuard);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.send("Upskill JS Backend Project");
+});
+
+app.get("/version", (req, res) => {
+  res.send(process.env.npm_package_version);
+});
+
+app.use(exchangeRoutes);
+
+
+// Firebase guard 
+app.use(firebaseGuard);
 
 // Routes
 app.use(transactionsRoutes);
@@ -36,13 +50,7 @@ app.use(userRoutes);
 app.use(currenciesRoutes);
 app.use(transfersRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Upskill JS Backend Project");
-});
 
-app.get("/version", (req, res) => {
-  res.send(process.env.npm_package_version);
-});
 
 // Error handler
 app.use(function (err, req, res, next) {
